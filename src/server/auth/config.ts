@@ -54,7 +54,6 @@ export const authConfig = {
   providers: [
     DiscordProvider,
     Google,
-    AppleProvider,
     CredentialsProvider({
       async authorize(credentials) {
         const creds = credentials as Credentials;
