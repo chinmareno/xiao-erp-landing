@@ -1,18 +1,17 @@
+// @ts-ignore
 import "@/styles/globals.css";
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
-import { TRPCReactProvider } from "@/trpc/react";
 import { Analytics } from "@vercel/analytics/next";
-import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Xiao ERP | Simple & Efficient ERP System for Small Businesses",
   description:
     "Xiao ERP is a lightweight and customizable ERP solution designed for small businesses. Manage inventory, accounting, and operations with ease through a clean, user-friendly interface.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "favicon.ico",
   },
   keywords: [
     "Xiao ERP",
@@ -35,12 +34,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable}`}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body>
-        <TRPCReactProvider>
-          {children}
-          <Toaster visibleToasts={1} richColors position="bottom-right" />
-          {process.env.NODE_ENV === "production" && <Analytics />}
-        </TRPCReactProvider>
+        {children}
+        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   );

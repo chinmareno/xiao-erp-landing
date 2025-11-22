@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "./ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useScopedI18n } from "@/app/public/locales/client";
+import { getScopedI18n } from "@/public/locales/i18n/server";
 
-const BackHomeButton = () => {
-  const scopedT = useScopedI18n("landingPage.modulesPath");
+const BackHomeButton = async () => {
+  const scopedT = await getScopedI18n("landingPage.modulesPath");
   return (
     <div className="mt-8 text-center">
       <Button

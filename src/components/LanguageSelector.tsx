@@ -10,10 +10,10 @@ import {
 } from "@/components/ui/menubar";
 import { Check, Globe } from "lucide-react";
 import { Button } from "./ui/button";
-import { useChangeLocale, useCurrentLocale } from "@/app/public/locales/client";
-import { useSession } from "next-auth/react";
-import { api } from "@/trpc/react";
-import { useLoadingStore } from "@/hooks/useLoadingStore";
+import {
+  useChangeLocale,
+  useCurrentLocale,
+} from "@/public/locales/i18n/client";
 
 export type LanguageLocale = "en" | "zh" | "id";
 
@@ -30,17 +30,6 @@ export const LanguageSelector = ({ align = "start" }: Props) => {
     { code: "id", name: "Bahasa Indonesia" },
   ] as const;
 
-  const { status } = useSession();
-  const mutate = api.user.changeLanguage.useMutation();
-  const utils = api.useUtils();
-
-  const { startLoading } = useLoadingStore();
-
-  const handleClick = async (language: LanguageLocale) => {
-    startLoading();
-    await mutate.mutateAsync(language);
-    await utils.user.getUser.invalidate();
-  };
   return (
     <Menubar className="w-full border-none bg-transparent shadow-none">
       <MenubarMenu>
@@ -56,9 +45,7 @@ export const LanguageSelector = ({ align = "start" }: Props) => {
                 key={language.code + index}
                 className="hover:cursor-pointer"
                 onClick={() => {
-                  status === "authenticated"
-                    ? void handleClick(language.code)
-                    : changeLocale(language.code);
+                  changeLocale(language.code);
                 }}
               >
                 {

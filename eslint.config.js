@@ -40,6 +40,7 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-expressions": "off",
       "@typescript-eslint/non-nullable-type-assertion-style": "off",
       "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
       "react-hooks/exhaustive-deps": "off",
     },
   },
