@@ -21,7 +21,7 @@ export const MobileNavbar = () => {
     { code: "zh", name: "中文" },
     { code: "id", name: "Bahasa Indonesia" },
   ] as const;
-  const appUrl = process.env.APP_URL!;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL!;
 
   return (
     <nav className="border-b bg-gray-100 px-4 sm:px-6 lg:px-8">

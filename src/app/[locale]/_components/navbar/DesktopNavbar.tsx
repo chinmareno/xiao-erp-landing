@@ -5,7 +5,7 @@ import { getI18n } from "@/public/locales/i18n/server";
 
 export const DesktopNavbar = async () => {
   const t = await getI18n();
-  const appUrl = process.env.APP_URL!;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL!;
 
   return (
     <nav className="border-b bg-gray-100 px-4 sm:px-6 lg:px-8">
